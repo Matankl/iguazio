@@ -1,0 +1,7 @@
+metadata:
+  name: monitored-model-runner-pool-matanz
+kind: project
+spec:
+  desired_state: online
+  source: ''
+  conda: ''

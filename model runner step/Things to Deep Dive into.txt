@@ -1,0 +1,7 @@
+
+#1. look at the docostring of "log_model()"
+2.
+3.
+4.
+5.
+6.
