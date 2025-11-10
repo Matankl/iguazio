@@ -1,0 +1,26 @@
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+
+to install and set redis:
+helm upgrade --install redis bitnami/redis \
+  --namespace default-tenant \
+  --set architecture=standalone \
+  --set auth.enabled=false \
+  --set master.persistence.enabled=false
+
+Kafka (no zookeeper, so have to use kraft):
+helm upgrade --install kafka \
+  --namespace default-tenant \
+  --set broker.combinedMode.enabled="true" \
+  --set broker.persistence.enabled="false" \
+  kafka-repo/kafka
+
+PostgreSQL, with admin user
+helm upgrade --install postgres bitnami/postgresql \
+  --namespace default-tenant \
+  --set primary.persistence.enabled=false \
+  --set auth.enablePostgresUser=true \
+  --set auth.postgresPassword=postgres \
+  --set auth.username=app \
+  --set auth.password=app \
+  --set auth.database=app
